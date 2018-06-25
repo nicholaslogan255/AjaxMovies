@@ -25,15 +25,15 @@ $(document).ready(function () {
 
     console.log("Script Running");
 
-    // when the make gifs buttons are clicked
-    $(document).on("click",".make-gifs", function () {
+    // when the make-gifs buttons are clicked
+    $(document).on("click", ".make-gifs", function () {
 
 
         // create URL for the query
         var movie = $(this).attr("data-movie");
         var results = 12;
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        movie + "&api_key=dc6zaTOxFJmzC&limit="+results;
+            movie + "&api_key=dc6zaTOxFJmzC&limit=" + results;
 
 
         // make ajax query
@@ -43,33 +43,43 @@ $(document).ready(function () {
         })
             .then(function (response) { // after we get a response..
 
-                console.log(response);
+                console.log(response); // log the JSON object to the console
 
-                // store 
+                // store the gifs in an array
                 var results = response.data;
 
+                // for every gif...
                 for (var i = 0; i < results.length; i++) {
 
+                    // create a div for the item card
                     var gifDiv = $("<div class='item'>");
 
+                    // get gif's rating from results array
                     var rating = results[i].rating;
 
+                    // create p tag with the rating
                     var p = $("<p>").text("Rating: " + rating);
 
                     // get gif from from results array
                     var gif = $("<img>");
-                    gif.attr("src", results[i].images.fixed_height.url);
+                    gif.attr("src", results[i].images.fixed_height_still.url);
+
+                    gif.addClass("gif");
 
                     // todo add data-state attr
+                    gif.attr("data-state", "still");
 
-                    // todo add data-animate
+                    // todo add data-animate attr
+                    gif.attr("data-animate", results[i].images.fixed_height.url);
 
-                    // todo add data still
+                    // todo add data-still attr
+                    gif.attr("data-still", results[i].images.fixed_height_still.url);
 
-                    gifDiv.prepend(p);
-                    gifDiv.prepend(gif);
 
-                    $("#gifs").prepend(gifDiv);
+                    gifDiv.prepend(p); // add the p tag to the card
+                    gifDiv.prepend(gif); // add the gif to the card
+
+                    $("#gifs").prepend(gifDiv); // add card to page
                 }
             });
     });
@@ -87,7 +97,7 @@ $(document).ready(function () {
 
         // add attributes
         newButton.addClass("make-gifs");
-        newButton.attr("data-movie",$("#movie-input").val());
+        newButton.attr("data-movie", $("#movie-input").val());
 
         // add text
         newButton.text($("#movie-input").val());
@@ -98,22 +108,41 @@ $(document).ready(function () {
         // add button to page
         $("#buttons").append(newButton);
 
+    });
+
+    // when the make-gifs buttons are clicked
+    $(document).on("click", ".gif", function () {
+
+        console.log("Gif Clicked");
+
+        var thisGif = $(this);
+
+
+        if (thisGif.attr("data-state") == "still") {
+            console.log("Animating...");
+
+
+            thisGif.attr("data-state", "animate");
+            thisGif.attr("src", thisGif.attr("data-animate"));
+
+        }
+        else {
+
+            console.log("freezing...");
+
+            thisGif.attr("data-state", "still");
+            thisGif.attr("src", thisGif.attr("data-still"));
+
+        }
 
 
 
 
-    
     });
 
 
 
 
 
+}); // end document ready
 
-
-
-});
-
-
-// // Generic function for displaying the movieInfo
-// $(document).on("click", ".movie", displayMovieInfo())
