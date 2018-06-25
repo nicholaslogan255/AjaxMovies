@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Movie Gifs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/quiz.css" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script src="assets/javascript/movieGifs.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <!-- Box to ensure header content is same size as main content for aestetics -->
+        <div id="headerbox">
+            <div id="name">Nic Logan</div>
+            <div id="navlinks">
+                <p>
+                    <a href=" https://nicholaslogan255.github.io/responsive-portfolio/"> Portfolio </a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section id="mainBody">
+
+        <!-- Buttons will Get Dumped Dere -->
+        <div id="buttons">
+
+            <button data-person="arnold schwarzenegger">
+                I'll be back
+            </button>
+
+            <button data-person="michael j fox">
+                Thats heavy, doc.
+            </button>
+
+
+        </div>
+
+        <form id="movie-form">
+            <label for="movie-input">Add a Movie button</label>
+            <input type="text" id="movie-input">
+
+            <!-- Button triggers new movie to be added -->
+            <input id="add-movie" type="submit" value="Add">
+        </form>
+
+
+        <!-- Movie gifs go here will Get Dumped Dere -->
+        <div id="gifs"></div>
+
+
+
+    </section>
+
+    <footer>
+        Copyright
+    </footer>
+
+</body>
+
+</html>
