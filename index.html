@@ -32,27 +32,31 @@
 
     <section id="mainBody">
 
-        <!-- Buttons will Get Dumped here -->
-        <div id="buttons">
+        <div id="top">
 
-            <button class="make-gifs" data-person="arnold schwarzenegger">
-                I'll be back
-            </button>
+            <!-- Buttons will Get Dumped here -->
+            <div id="buttons">
 
-            <button class="make-gifs" data-person="Back to the future">
-                Thats heavy, doc.
-            </button>
+                <!-- Example buttons with some of my favorite movies -->
+                <button class="make-gifs" data-movie="Princess Bride">
+                    Princess Bride
+                </button>
+
+                <button class="make-gifs" data-movie="Back to the future">
+                    Back to the Future
+                </button>
 
 
+            </div>
+
+            <form id="movie-form">
+                <label for="movie-input">Add a Movie</label>
+                <input type="text" id="movie-input">
+
+                <!-- Button triggers new movie to be added -->
+                <input id="add-movie-button" type="submit" value="Add Button">
+            </form>
         </div>
-
-        <form id="movie-form">
-            <label for="movie-input">Add a Movie button</label>
-            <input type="text" id="movie-input">
-
-            <!-- Button triggers new movie to be added -->
-            <input id="add-movie" type="submit" value="Add">
-        </form>
 
         <hr>
 

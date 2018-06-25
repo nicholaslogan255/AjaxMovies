@@ -76,6 +76,7 @@ section{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
 }
 
 
@@ -84,7 +85,7 @@ section{
 /* CSS for the form page */
 input[type=text]{
     position: relative;
-    width: 30%;
+    width: 49%;
     height: 2em;
 }
 input[type=text]:focus{
@@ -96,7 +97,7 @@ input[name=message]{
 input[type=submit], button{
     background-color: #4aaaa5;
     width: 100px;
-    height: 50px;
+    height: 40px;
     border: none;
     /* margin-top: 20px; */
     color: #ffffff;
@@ -106,8 +107,20 @@ button{
     top: 0%;
     float: left;
     margin-right: 5px;
+    margin-top: 5px;
 }
 
+/* Makes the entire form act as one single unit, doesn't break up each section */
+form{
+   margin-top: 5px;
+    width: 400px;
+    float: left;
+}
+
+/* Keeps the buttons and input feild formatted correctly */
+#top{
+    overflow: auto;
+}
 
 img{
     height: 200px;
@@ -147,7 +160,7 @@ footer{
   These rules take effect when the browser's width
   is either 768px or less.
 */
-@media screen and (max-width:980px) {
+/* @media screen and (max-width:980px) {
 
     #headerbox{
         width: 100%;
@@ -164,7 +177,7 @@ footer{
     section{
         width: 80%
     }
-}
+} */
 
 /*
   These rules take effect when the browser's width

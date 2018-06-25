@@ -25,23 +25,27 @@ $(document).ready(function () {
 
     console.log("Script Running");
 
-
+    // when the make gifs buttons are clicked
     $(document).on("click",".make-gifs", function () {
 
 
-
-        var person = $(this).attr("data-person");
+        // create URL for the query
+        var movie = $(this).attr("data-movie");
+        var results = 12;
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            person + "&api_key=dc6zaTOxFJmzC&limit=10";
+        movie + "&api_key=dc6zaTOxFJmzC&limit="+results;
 
+
+        // make ajax query
         $.ajax({
             url: queryURL,
             method: "GET"
         })
-            .then(function (response) {
+            .then(function (response) { // after we get a response..
 
                 console.log(response);
 
+                // store 
                 var results = response.data;
 
                 for (var i = 0; i < results.length; i++) {
@@ -68,6 +72,37 @@ $(document).ready(function () {
                     $("#gifs").prepend(gifDiv);
                 }
             });
+    });
+
+
+    //  On Click event associated with the add-movie-button button
+    $("#add-movie-button").on("click", function (event) {
+        // prevent form from submitting
+        event.preventDefault();
+
+        console.log("Trying to add movie button");
+
+        // create button
+        var newButton = $("<button>");
+
+        // add attributes
+        newButton.addClass("make-gifs");
+        newButton.attr("data-movie",$("#movie-input").val());
+
+        // add text
+        newButton.text($("#movie-input").val());
+
+        // clear input field
+        $("#movie-input").val("");
+
+        // add button to page
+        $("#buttons").append(newButton);
+
+
+
+
+
+    
     });
 
 
