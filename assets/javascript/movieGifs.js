@@ -26,10 +26,10 @@ $(document).ready(function () {
     console.log("Script Running");
 
 
-    $("button").on("click", function () {
+    $(document).on("click",".make-gifs", function () {
 
 
-        
+
         var person = $(this).attr("data-person");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             person + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -41,25 +41,42 @@ $(document).ready(function () {
             .then(function (response) {
 
                 console.log(response);
+
                 var results = response.data;
 
                 for (var i = 0; i < results.length; i++) {
+
                     var gifDiv = $("<div class='item'>");
 
                     var rating = results[i].rating;
 
                     var p = $("<p>").text("Rating: " + rating);
 
-                    var personImage = $("<img>");
-                    personImage.attr("src", results[i].images.fixed_height.url);
+                    // get gif from from results array
+                    var gif = $("<img>");
+                    gif.attr("src", results[i].images.fixed_height.url);
+
+                    // todo add data-state attr
+
+                    // todo add data-animate
+
+                    // todo add data still
 
                     gifDiv.prepend(p);
-                    gifDiv.prepend(personImage);
+                    gifDiv.prepend(gif);
 
                     $("#gifs").prepend(gifDiv);
                 }
             });
     });
+
+
+
+
+
+
+
+
 });
 
 
